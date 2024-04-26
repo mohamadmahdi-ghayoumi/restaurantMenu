@@ -5,10 +5,10 @@ import OrderText from "./OrderText/OrderText";
 import { foodData } from "../../constants/mock-data";
 
 function Burger() {
-  let totalOrders = foodData.reduce((n, { totalPrice }) => n + totalPrice, 0);
   const [quantity, setQuantity] = useState([]);
   const [totalPrice, setTotalPrice] = useState([]);
-
+  let totalOrders = quantity.reduce((n, { totalPrice }) => n + totalPrice, 0);
+  console.log(totalOrders);
 
   return (
     <div className="flex bg-[#00688e] h-screen gap-4">
@@ -18,25 +18,23 @@ function Burger() {
         </h1>{" "}
         <img src="" alt="" />
         <div className="grid grid-cols-2 gap-5 ml-5 mt-4 overflow-auto grid-flow-row mb-7 pl-2 pr-7">
-          {foodData.map((item) =>  <Card  product = {item} quantity={quantity} setQuantity={setQuantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice} />)}
-         
+          {foodData.map((item) => (
+            <Card
+              product={item}
+              quantity={quantity}
+              setQuantity={setQuantity}
+              totalPrice={totalPrice}
+              setTotalPrice={setTotalPrice}
+            />
+          ))}
         </div>
       </div>
 
       <div className="flex flex-col w-[30%] rounded-xl bg-[#00c8c4] m-3 h-fit p-5 gap-20  shadow-slate-600 shadow-2xl">
         <div className="flex flex-col gap-4 mt-3">
-          <OrderText
-            text={"جمع کل سفارشات"}
-            pricefood={totalOrders}
-          ></OrderText>
-          <OrderText
-            text={"حق سرویس و کارمزد"}
-            pricefood={totalOrders * 0.09}
-          ></OrderText>
-          <OrderText 
-            text={"جمع کل سفارشات"}
-            pricefood={totalOrders + totalOrders * 0.09}
-          ></OrderText>
+          <OrderText text={"جمع کل سفارشات"} pricefood={totalOrders}></OrderText>
+          <OrderText text={"حق سرویس و کارمزد"} pricefood={totalOrders*0.09}></OrderText>
+          <OrderText text={"جمع کل سفارشات"} pricefood={totalOrders + totalOrders*0.09}></OrderText>
           <div className=" flex">
             <input
               type="text"
@@ -50,7 +48,7 @@ function Burger() {
         <div className="gap-3 flex flex-col mb-2">
           <OrderText
             text={"جمع کل سفارشات"}
-            pricefood={"0"}
+            pricefood={totalOrders}
             bgColor={"bg-[#ffdb02] px-2 py-1 rounded-md"}
           ></OrderText>
           <button className="w-full bg-[#008292] py-2 text-white rounded-md">
