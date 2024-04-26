@@ -25,13 +25,11 @@
 
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 14px;  margin-right: 30px;
-
+  border-radius: 14px;  
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;  margin-right: 30px;
-
+  background: #555;  
 }
 
 
